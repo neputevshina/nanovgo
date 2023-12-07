@@ -1,3 +1,4 @@
+//go:build (darwin || linux) && (arm || arm64)
 // +build darwin linux
 // +build arm arm64
 

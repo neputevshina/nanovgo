@@ -1,13 +1,13 @@
-// +build !arm !arm64
-// +build !js
+//go:build !arm && !arm64 && !js
+// +build !arm,!arm64,!js
 
 package nanovgo
 
 import (
-	"log"
-	"unsafe"
 	"encoding/binary"
+	"log"
 	"math"
+	"unsafe"
 )
 
 type Float float32

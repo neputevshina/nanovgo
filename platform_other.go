@@ -1,5 +1,5 @@
-//go:build !arm && !arm64 && !js
-// +build !arm,!arm64,!js
+//go:build !(js || ios || android)
+// +build !js,!ios,!android
 
 package nanovgo
 

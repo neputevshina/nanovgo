@@ -1464,14 +1464,14 @@ func (c *Context) flattenPaths() {
 		}
 
 		// Enforce winding.
-		if path.count > 2 {
-			area := polyArea(points, path.count)
-			if path.winding == Solid && area < 0.0 {
-				polyReverse(points, path.count)
-			} else if path.winding == Hole && area > 0.0 {
-				polyReverse(points, path.count)
-			}
-		}
+		// if path.count > 2 {
+		// 	area := polyArea(points, path.count)
+		// 	if path.winding == Solid && area < 0.0 {
+		// 		polyReverse(points, path.count)
+		// 	} else if path.winding == Hole && area > 0.0 {
+		// 		polyReverse(points, path.count)
+		// 	}
+		// }
 		for i := 0; i < path.count; i++ {
 			// Calculate segment direction and length
 			p0.len, p0.dx, p0.dy = normalize(p1.x-p0.x, p1.y-p0.y)

@@ -122,6 +122,8 @@ type Context struct {
 	fillTriCount   int
 	strokeTriCount int
 	textTriCount   int
+
+	beginPath bool
 }
 
 // Delete is called when tearing down NanoVGo context
@@ -482,6 +484,10 @@ func (c *Context) ResetScissor() {
 
 // BeginPath clears the current path and sub-paths.
 func (c *Context) BeginPath() {
+	if c.beginPath {
+		panic(`must end path with Fill or Stroke`)
+	}
+	c.beginPath = true
 	c.commands = c.commands[:0]
 	c.cache.clearPathCache()
 }
@@ -704,8 +710,17 @@ func (c *Context) DebugDumpPathCache() {
 	}
 }
 
+// Also allows to do another Fill or Stroke operation.
+func (c *Context) Also() {
+	c.beginPath = true
+}
+
 // Fill fills the current path with current fill style.
 func (c *Context) Fill() {
+	if !c.beginPath {
+		panic(`path must be started with BeginPath or continued with Also`)
+	}
+	c.beginPath = false
 	state := c.getState()
 	fillPaint := state.fill
 	c.flattenPaths()
@@ -733,6 +748,10 @@ func (c *Context) Fill() {
 
 // Stroke draws the current path with current stroke style.
 func (c *Context) Stroke() {
+	if !c.beginPath {
+		panic(`path must be started with BeginPath or continued with Also`)
+	}
+	c.beginPath = false
 	state := c.getState()
 	scale := state.xform.getAverageScale()
 	strokeWidth := clampF(state.strokeWidth*scale, 0.0, 200.0)

@@ -227,6 +227,7 @@ func (c *Context) Block(block func()) {
 // Reset resets current render state to default values. Does not affect the render state stack.
 func (c *Context) Reset() {
 	c.getState().reset()
+	c.beginPath = false
 }
 
 // SetStrokeWidth sets the stroke width of the stroke style.

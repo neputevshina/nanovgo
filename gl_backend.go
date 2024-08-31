@@ -3,8 +3,9 @@ package nanovgo
 import (
 	"errors"
 	"fmt"
-	"github.com/goxjs/gl"
 	"strings"
+
+	"github.com/goxjs/gl"
 )
 
 const (
@@ -624,7 +625,7 @@ func (p *glParams) renderFill(paint *Paint, scissor *nvgScissor, fringe float32,
 	call := &c.calls[len(c.calls)-1]
 	glPaths, call.pathOffset = c.allocPath(call.pathCount)
 
-	if len(paths) == 0 && paths[0].convex {
+	if len(paths) == 1 && paths[0].convex {
 		call.callType = glnvgCONVEXFILL
 	} else {
 		call.callType = glnvgFILL

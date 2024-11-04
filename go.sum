@@ -8,8 +8,6 @@ github.com/goxjs/gl v0.0.0-20230705020350-37525f4d9d35 h1:0nrx2NBHnXyMlX9vZ+nHuu
 github.com/goxjs/gl v0.0.0-20230705020350-37525f4d9d35/go.mod h1:5N8oq1ByK4sl23tHlaSzAz+K3HembX6EP/bw25Nl1aU=
 github.com/goxjs/glfw v0.0.0-20230704040236-622eb27e272a h1:7PTr4KjX8oeckUIQgwRc/BwTJN4ti5dAR5MGoBHDKR8=
 github.com/goxjs/glfw v0.0.0-20230704040236-622eb27e272a/go.mod h1:sVbv2S3I5K7bTlalOHCPfV429ZpKzGq5zwsWgrzj5aQ=
-github.com/shibukawa/nanovgo v0.0.0-20160822101109-9141d09b3652 h1:7ORiLBcdIPEjwwbbjUpYIvy3Z6syqAhnfY/3m5DSs5M=
-github.com/shibukawa/nanovgo v0.0.0-20160822101109-9141d09b3652/go.mod h1:A/HWQKoHKEbx5r+LI6Lns9g6vSROSGw59APgU2Zr+Cc=
 honnef.co/go/js/console v0.0.0-20150119023344-105276c43558 h1:h/U4Bu3p/OB5OvK6+7cXA1oleuDeFzZOTHuwZjMT36A=
 honnef.co/go/js/console v0.0.0-20150119023344-105276c43558/go.mod h1:K5NtVTubnQQDVBcHCysv3MwAde+idPmWBeXxpHczwcU=
 honnef.co/go/js/dom v0.0.0-20231030024858-cb489e859d05 h1:RfirDq7o2ELiU+mAxRB4AO3u7czT1QEg6SZgSBXeSus=

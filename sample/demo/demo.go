@@ -1,9 +1,10 @@
 package demo
 
 import (
-	"github.com/shibukawa/nanovgo"
 	"math"
 	"strconv"
+
+	"github.com/neputevshina/nanovgo"
 )
 
 const (
@@ -328,6 +329,7 @@ func drawButton(ctx *nanovgo.Context, preicon int, text string, x, y, w, h float
 	if !isBlack(col) {
 		ctx.SetFillColor(col)
 		ctx.Fill()
+		ctx.Also()
 	}
 	ctx.SetFillPaint(bg)
 	ctx.Fill()
@@ -390,6 +392,7 @@ func drawSlider(ctx *nanovgo.Context, pos, x, y, w, h float32) {
 	ctx.Circle(x+float32(int(pos*w)), cy, kr-1)
 	ctx.SetFillColor(nanovgo.RGBA(40, 43, 48, 255))
 	ctx.Fill()
+	ctx.Also()
 	ctx.SetFillPaint(knob)
 	ctx.Fill()
 
@@ -769,9 +772,11 @@ func drawColorWheel(ctx *nanovgo.Context, x, y, w, h, t float32) {
 	paint = nanovgo.LinearGradient(r, 0, ax, ay, nanovgo.HSLA(hue, 1.0, 0.5, 255), nanovgo.RGBA(255, 255, 255, 255))
 	ctx.SetFillPaint(paint)
 	ctx.Fill()
+	ctx.Also()
 	paint = nanovgo.LinearGradient((r+ax)*0.5, (0+ay)*0.5, bx, by, nanovgo.RGBA(0, 0, 0, 0), nanovgo.RGBA(0, 0, 0, 255))
 	ctx.SetFillPaint(paint)
 	ctx.Fill()
+	ctx.Also()
 	ctx.SetStrokeColor(nanovgo.RGBA(0, 0, 0, 64))
 	ctx.Stroke()
 

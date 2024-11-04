@@ -18,6 +18,9 @@ type FontInfo struct {
 	numGlyphs        int // number of glyphs, needed for range checking
 	indexMap         int // a cmap mapping for our chosen character encoding
 	indexToLocFormat int // format needed to map from glyph index to glyph
+
+	capk     float64
+	fonthash [16]byte
 }
 
 // Each .ttf/.ttc file may have more than one font. Each font has a sequential
@@ -96,5 +99,15 @@ func InitFont(data []byte, offset int) (font *FontInfo, err error) {
 	}
 
 	font.indexToLocFormat = int(u16(data, font.head+50))
+
+	// https://learn.microsoft.com/en-us/typography/opentype/spec/os2#scapheight
+	ok, _, y0, _, y1 := font.GetGlyphBox(font.FindGlyphIndex('H'))
+	if !ok {
+		err = errors.New("Can't use this font: no ‘latin capital letter H’ (ASCII 0x48) glyph in a font, can't calculate cap height")
+		return
+	}
+	// Glyph height / (ascent - descent)
+	font.capk = float64(y1-y0) / float64(u16(font.data, font.hhea+4)-u16(font.data, font.hhea+6))
+
 	return
 }

@@ -1,8 +1,8 @@
 // This library processes TrueType files:
-//  - parse files
-//  - extract glyph metrics
-//  - extract glyph shapes
-//  - render glyphs to one-channel bitmaps with antialiasing (box filter)
+//   - parse files
+//   - extract glyph metrics
+//   - extract glyph shapes
+//   - render glyphs to one-channel bitmaps with antialiasing (box filter)
 package truetype
 
 import (
@@ -48,7 +48,7 @@ type Vertex struct {
 
 func (font *FontInfo) ScaleForPixelHeight(height float64) float64 {
 	fheight := float64(u16(font.data, font.hhea+4) - u16(font.data, font.hhea+6))
-	return height / fheight
+	return height / fheight / font.capk
 }
 
 func (font *FontInfo) GetGlyphBitmapBox(glyph int, scaleX, scaleY float64) (int, int, int, int) {

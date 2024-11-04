@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/goxjs/gl v0.0.0-20230705020350-37525f4d9d35
 	github.com/goxjs/glfw v0.0.0-20230704040236-622eb27e272a
-	github.com/shibukawa/nanovgo v0.0.0-20160822101109-9141d09b3652
 	honnef.co/go/js/console v0.0.0-20150119023344-105276c43558
 )
 
